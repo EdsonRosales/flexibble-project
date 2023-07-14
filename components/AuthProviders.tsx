@@ -18,9 +18,26 @@ function AuthProviders() {
 
   const [providers, setProviders] = useState<Providers | null>(null);
 
-  return (
-    <div>AuthProviders</div>
-  )
+  useEffect(() => {
+    const fetchProviders = async () => {
+      const res = await getProviders();
+      console.log(res);
+      setProviders(res);
+    }
+
+    fetchProviders();
+  }, []);
+  
+
+  if(providers) {
+    return (
+      <div>
+        {Object.values(providers).map((provider: Provider, i) => (
+          <button key={i}>{provider.id}</button>
+        ))}
+      </div>
+    )
+  }
 }
 
 export default AuthProviders
