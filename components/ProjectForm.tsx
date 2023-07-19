@@ -6,6 +6,7 @@ import Image from 'next/image';
 import FormField from './FormField';
 import { categoryFilters } from '@/constants';
 import CustomMenu from './CustomMenu';
+import Button from './Button';
 
 type ProjectFormProps = {
     type: string,
@@ -111,7 +112,12 @@ function ProjectForm({ type, session }: ProjectFormProps) {
         />
 
         <div className='flexStart w-full'>
-            <button>Create</button>
+          <Button
+            title="Create"
+            type="submit"
+            leftIcon={isSubmitting ? '' : '/plus.svg'}
+            isSubmitting={isSubmitting}
+          />
         </div>
     </form>
   )
