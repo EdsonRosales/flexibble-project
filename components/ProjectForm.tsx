@@ -15,7 +15,28 @@ type ProjectFormProps = {
 function ProjectForm({ type, session }: ProjectFormProps) {
 
   const handleFormSubmit = (e: React.FormEvent) => {};
-  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {};
+
+  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    const file = e.target.files?.[0];
+
+    if(!file) return;
+
+    if(!file.type.includes('image')) {
+      return alert('Please upload an image file');
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    /** This function pass the image to cloudinary to store him */
+    reader.onload = () => {
+      const result = reader.result as string;
+      handleStateChange('image', result);  // <---- Handle image upload that obtaing from the result
+    };
+  };
+
   const handleStateChange = (fieldName: string, value: string) => {
     setform((prevState) => ({ ...prevState, [fieldName]: value }));
   };
@@ -31,8 +52,8 @@ function ProjectForm({ type, session }: ProjectFormProps) {
   });
 
   return (
-    <form onSubmit={handleFormSubmit} className='flexstart form'>
-        <div className='flexstart form_image-container'>
+    <form onSubmit={handleFormSubmit} className='flexStart form'>
+        <div className='flexStart form_image-container'>
             <label htmlFor='poster' className='flexCenter form_image-label'>
                 {!form.image && 'Choose a poster for you project'}
             </label>

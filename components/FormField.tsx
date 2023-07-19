@@ -16,7 +16,7 @@ function FormField({
     setState
 }: FormFieldProps) {
   return (
-    <div className="flexstart flex-col w-full gap-4">
+    <div className="flexStart flex-col w-full gap-4">
       <label className="w-full text-gray-100">
         {title}
       </label>
