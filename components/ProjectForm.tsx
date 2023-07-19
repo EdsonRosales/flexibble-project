@@ -1,6 +1,6 @@
 "use client"
 
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { SessionInterface } from '@/common.types';
 import Image from 'next/image';
 import FormField from './FormField';
@@ -16,12 +16,19 @@ function ProjectForm({ type, session }: ProjectFormProps) {
 
   const handleFormSubmit = (e: React.FormEvent) => {};
   const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {};
-  const handleStateChange = (fieldName: string, value: string) => {};
-
-  const form = {
-    image: '',
-    title: ''
+  const handleStateChange = (fieldName: string, value: string) => {
+    setform((prevState) => ({ ...prevState, [fieldName]: value }));
   };
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [form, setform] = useState({
+    title: '',
+    description: '',
+    image: '',
+    liveSiteUrl: '',
+    githubUrl: '',
+    category: '',
+  });
 
   return (
     <form onSubmit={handleFormSubmit} className='flexstart form'>
@@ -72,12 +79,6 @@ function ProjectForm({ type, session }: ProjectFormProps) {
             state={form.githubUrl}
             placeholder="https://github.com/EdsonRosales"
             setState={(value) => handleStateChange('githubUrl', value)}
-        />
-        <FormField
-            title="Title"
-            state={form.title}
-            placeholder="Flexibble"
-            setState={(value) => handleStateChange('title', value)}
         />
 
         {/* CustomInput Category */}

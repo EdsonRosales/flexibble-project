@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { Menu } from "@headlessui/react";
 import Image from "next/image";
 
