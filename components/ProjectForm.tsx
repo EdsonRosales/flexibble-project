@@ -3,6 +3,7 @@
 import { ChangeEvent } from 'react'
 import { SessionInterface } from '@/common.types';
 import Image from 'next/image';
+import FormField from './FormField';
 
 type ProjectFormProps = {
     type: string,
@@ -13,9 +14,11 @@ function ProjectForm({ type, session }: ProjectFormProps) {
 
   const handleFormSubmit = (e: React.FormEvent) => {};
   const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {};
+  const handleStateChange = (fieldName: string, value: string) => {};
 
   const form = {
-    image: ''
+    image: '',
+    title: ''
   };
 
   return (
@@ -41,6 +44,13 @@ function ProjectForm({ type, session }: ProjectFormProps) {
                 />
             )}
         </div>
+
+        <FormField
+            title="Title"
+            state={form.title}
+            placeholder="Flexibble"
+            setState={(value) => handleStateChange('title', value)}
+        />
     </form>
   )
 }
