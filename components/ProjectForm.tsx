@@ -51,6 +51,37 @@ function ProjectForm({ type, session }: ProjectFormProps) {
             placeholder="Flexibble"
             setState={(value) => handleStateChange('title', value)}
         />
+        <FormField
+            title="Description"
+            state={form.description}
+            placeholder="Flexibble"
+            setState={(value) => handleStateChange('description', value)}
+        />
+        <FormField
+            type='url'
+            title="Website URL"
+            state={form.liveSiteUrl}
+            placeholder="https://jsmastery.pro"
+            setState={(value) => handleStateChange('liveSiteUrl', value)}
+        />
+        <FormField
+            type='url'
+            title="Github URL"
+            state={form.githubUrl}
+            placeholder="https://github.com/EdsonRosales"
+            setState={(value) => handleStateChange('githubUrl', value)}
+        />
+        <FormField
+            title="Title"
+            state={form.title}
+            placeholder="Flexibble"
+            setState={(value) => handleStateChange('title', value)}
+        />
+
+        {/* CustomInput Category */}
+        <div className='flexStart w-full'>
+            <button>Create</button>
+        </div>
     </form>
   )
 }
