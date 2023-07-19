@@ -18,11 +18,13 @@ const makeGraphQLRequest = async (query: string, variables = {}) => {
 
 // Action to get the User
 export const getUser = (email: string) => {
+    client.setHeader('x-api-key', apiKey);
     return makeGraphQLRequest(getUserQuery, { email });
 };
 
 // Action to create a User
 export const createUser = (name: string, email: string, avatarUrl: string) => {
+    client.setHeader('x-api-key', apiKey);
     const variables = {
         input: {
             name, email, avatarUrl
