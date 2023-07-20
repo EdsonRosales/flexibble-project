@@ -15,8 +15,22 @@ type ProjectFormProps = {
 
 function ProjectForm({ type, session }: ProjectFormProps) {
 
-  const handleFormSubmit = (e: React.FormEvent) => {};
+  /** Function to submit the Form */
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
+    setIsSubmitting(true);
+    
+    try {
+      if (type === 'create') {
+        // Create project
+      }
+    } catch (error) {
+      
+    }
+  };
+
+  /** Input for catch a Image & pass the image data as data URL */
   const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
 
@@ -38,6 +52,7 @@ function ProjectForm({ type, session }: ProjectFormProps) {
     };
   };
 
+  /** Function to handle the Form state */
   const handleStateChange = (fieldName: string, value: string) => {
     setform((prevState) => ({ ...prevState, [fieldName]: value }));
   };
