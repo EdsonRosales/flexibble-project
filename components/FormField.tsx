@@ -1,19 +1,19 @@
 type FormFieldProps = {
-    type?: string;
-    title: string;
-    state: string;
-    placeholder: string;
-    isTextArea?: boolean;
-    setState: (value: string) => void;
+  type?: string;
+  title: string;
+  state: string;
+  placeholder: string;
+  isTextArea?: boolean;
+  setState: (value: string) => void;
 }
 
 function FormField({
-    type, 
-    title,
-    state,
-    placeholder,
-    isTextArea,
-    setState
+  type, 
+  title,
+  state,
+  placeholder,
+  isTextArea,
+  setState
 }: FormFieldProps) {
   return (
     <div className="flexStart flex-col w-full gap-4">

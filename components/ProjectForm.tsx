@@ -9,8 +9,8 @@ import CustomMenu from './CustomMenu';
 import Button from './Button';
 
 type ProjectFormProps = {
-    type: string,
-    session: SessionInterface
+  type: string,
+  session: SessionInterface
 }
 
 function ProjectForm({ type, session }: ProjectFormProps) {
@@ -54,71 +54,71 @@ function ProjectForm({ type, session }: ProjectFormProps) {
 
   return (
     <form onSubmit={handleFormSubmit} className='flexStart form'>
-        <div className='flexStart form_image-container'>
-            <label htmlFor='poster' className='flexCenter form_image-label'>
-                {!form.image && 'Choose a poster for you project'}
-            </label>
-            <input
-                id='image'
-                type='file'
-                accept='image/*'
-                required={type === 'create'}
-                className='form_image-input'
-                onChange={handleChangeImage}
-            />
-            {form.image && (
-                <Image
-                    src={form?.image}
-                    className='sm:p-10 object-contain z-20'
-                    alt='Project poster'
-                    fill
-                />
-            )}
-        </div>
-
-        <FormField
-            title="Title"
-            state={form.title}
-            placeholder="Flexibble"
-            setState={(value) => handleStateChange('title', value)}
+      <div className='flexStart form_image-container'>
+        <label htmlFor='poster' className='flexCenter form_image-label'>
+          {!form.image && 'Choose a poster for you project'}
+        </label>
+        <input
+          id='image'
+          type='file'
+          accept='image/*'
+          required={type === 'create'}
+          className='form_image-input'
+          onChange={handleChangeImage}
         />
-        <FormField
-            title="Description"
-            state={form.description}
-            placeholder="Flexibble"
-            setState={(value) => handleStateChange('description', value)}
-        />
-        <FormField
-            type='url'
-            title="Website URL"
-            state={form.liveSiteUrl}
-            placeholder="https://jsmastery.pro"
-            setState={(value) => handleStateChange('liveSiteUrl', value)}
-        />
-        <FormField
-            type='url'
-            title="Github URL"
-            state={form.githubUrl}
-            placeholder="https://github.com/EdsonRosales"
-            setState={(value) => handleStateChange('githubUrl', value)}
-        />
-
-        {/* CustomInput Category */}
-        <CustomMenu
-            title="Category"
-            state={form.category}
-            filters={categoryFilters}
-            setState={(value) => handleStateChange('category', value)}
-        />
-
-        <div className='flexStart w-full'>
-          <Button
-            title="Create"
-            type="submit"
-            leftIcon={isSubmitting ? '' : '/plus.svg'}
-            isSubmitting={isSubmitting}
+        {form.image && (
+          <Image
+            src={form?.image}
+            className='sm:p-10 object-contain z-20'
+            alt='Project poster'
+            fill
           />
-        </div>
+        )}
+      </div>
+
+      <FormField
+        title="Title"
+        state={form.title}
+        placeholder="Flexibble"
+        setState={(value) => handleStateChange('title', value)}
+      />
+      <FormField
+        title="Description"
+        state={form.description}
+        placeholder="Flexibble"
+        setState={(value) => handleStateChange('description', value)}
+      />
+      <FormField
+        type='url'
+        title="Website URL"
+        state={form.liveSiteUrl}
+        placeholder="https://jsmastery.pro"
+        setState={(value) => handleStateChange('liveSiteUrl', value)}
+      />
+      <FormField
+        type='url'
+        title="Github URL"
+        state={form.githubUrl}
+        placeholder="https://github.com/EdsonRosales"
+        setState={(value) => handleStateChange('githubUrl', value)}
+      />
+
+      {/* CustomInput Category */}
+      <CustomMenu
+        title="Category"
+        state={form.category}
+        filters={categoryFilters}
+        setState={(value) => handleStateChange('category', value)}
+      />
+
+      <div className='flexStart w-full'>
+        <Button
+          title="Create"
+          type="submit"
+          leftIcon={isSubmitting ? '' : '/plus.svg'}
+          isSubmitting={isSubmitting}
+        />
+      </div>
     </form>
   )
 }
